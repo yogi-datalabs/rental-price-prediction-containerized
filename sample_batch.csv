@@ -1,0 +1,4 @@
+id,room_type,accommodates,bathrooms,cancellation_policy,cleaning_fee,instant_bookable,review_scores_rating,bedrooms,beds
+101,Entire home/apt,5,3,strict,true,f,90,3,3
+102,Private room,2,1,moderate,false,t,95,1,1
+103,Shared room,1,1,flexible,false,f,80,0,1

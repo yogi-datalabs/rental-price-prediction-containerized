@@ -1,0 +1,29 @@
+services:
+  backend:
+    build: ./backend
+    container_name: rental-backend
+    ports:
+      - "7860:7860"
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "python",
+          "-c",
+          "import urllib.request; urllib.request.urlopen('http://localhost:7860/health')",
+        ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 20s
+
+  frontend:
+    build: ./frontend
+    container_name: rental-frontend
+    environment:
+      BACKEND_URL: http://backend:7860
+    ports:
+      - "8501:8501"
+    depends_on:
+      backend:
+        condition: service_healthy
